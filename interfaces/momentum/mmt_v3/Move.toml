@@ -1,0 +1,11 @@
+[package]
+name = "mmt_v3"
+edition = "2024.beta"
+published-at = "0xcf60a40f45d46fc1e828871a647c1e25a0915dec860d2662eb10fdb382c3c1d1"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2", override = true }
+
+
+[addresses]
+mmt_v3 = "0xcf60a40f45d46fc1e828871a647c1e25a0915dec860d2662eb10fdb382c3c1d1"

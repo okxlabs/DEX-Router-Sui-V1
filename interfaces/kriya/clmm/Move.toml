@@ -1,0 +1,12 @@
+# mainnet
+# --------------------------
+[package]
+name = "KriyaClmm"
+version = "4"
+published-at = "0x0d7305a7475ed54adc905365bd081939a81926636b4c438cf2f75f4924b8d960"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+kriya_clmm = "0xf6c05e2d9301e6e91dc6ab6c3ca918f7d55896e1f1edd64adc0e615cde27ebf1"

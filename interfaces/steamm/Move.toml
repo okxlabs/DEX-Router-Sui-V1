@@ -1,0 +1,14 @@
+[package]
+name = "steamm"
+# edition = "2024.beta"
+published-at = "0x5ef2a1bca239764c8381ba26b758833060eadb8903682e4fb15e58c6406e2488"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+suilend = { local = "../suilend/suilend" }
+oracles = { local = "../suilend/oracles" }
+
+[addresses]
+steamm = "0x4fb1cf45dffd6230305f1d269dd1816678cc8e3ba0b747a813a556921219f261"
+sui =  "0000000000000000000000000000000000000000000000000000000000000002"
+sui_system = "0000000000000000000000000000000000000000000000000000000000000003"

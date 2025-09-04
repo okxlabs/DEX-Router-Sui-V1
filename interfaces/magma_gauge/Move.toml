@@ -1,0 +1,11 @@
+[package]
+name = "magma_gauge"
+version = "0.0.1"
+#edition = "2024.beta"
+published-at = "0x2de81c0f5cc2aa176da9f093834efbf846d581afa46516bf4952b6efd3a44992"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+magma_gauge = "0x2de81c0f5cc2aa176da9f093834efbf846d581afa46516bf4952b6efd3a44992"

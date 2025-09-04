@@ -1,0 +1,10 @@
+[package]
+name = "flowx_clmm"
+version = "0.0.1"
+published-at = "0xe882cd54551e73e64ff5b257146a0c5264546974cf00d78ecc871017cb22df67"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+flowx_clmm = "0x25929e7f29e0a30eb4e692952ba1b5b65a3a4d65ab5f2a32e1ba3edcb587f26d"

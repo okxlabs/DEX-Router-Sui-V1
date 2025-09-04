@@ -1,0 +1,11 @@
+[package]
+name = "scallop_math"
+version = "10.0.1"
+published-at = "0xad013d5fde39e15eabda32b3dbdafd67dac32b798ce63237c27a8f73339b9b6f"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir="crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+scallop_math = "0xad013d5fde39e15eabda32b3dbdafd67dac32b798ce63237c27a8f73339b9b6f"
+sui =  "0000000000000000000000000000000000000000000000000000000000000002"

@@ -1,0 +1,11 @@
+[package]
+name = "sprungsui"
+# edition = "2024.beta"
+published-at = "0xb87cea7e4220461e35dff856185814d6a37ef479ce895ffbe4efa1d1af5aacbc"
+# https://github.com/CetusProtocol/aggregator/blob/main/packages/externals/suilend/sprungsui/sources/sprungsui.move
+
+[dependencies]
+# Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+sprungsui = "0xb87cea7e4220461e35dff856185814d6a37ef479ce895ffbe4efa1d1af5aacbc"

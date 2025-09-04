@@ -1,0 +1,13 @@
+[package]
+name = "slippage_check"
+edition = "2024.beta"
+published-at = "0x8add2f0f8bc9748687639d7eb59b2172ba09a0172d9e63c029e23a7dbdb6abe6"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2", override = true }
+mmt_v3 = { local = "../mmt_v3" }
+
+
+[addresses]
+slippage_check = "0x8add2f0f8bc9748687639d7eb59b2172ba09a0172d9e63c029e23a7dbdb6abe6"
+mmt_v3 = "0xcf60a40f45d46fc1e828871a647c1e25a0915dec860d2662eb10fdb382c3c1d1"

@@ -1,0 +1,13 @@
+[package]
+name = "Pyth"
+published-at = "0x00b53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302"
+# https://github.com/solendprotocol/pyth-crosschain/blob/main/target_chains/sui/contracts/sources/price_feed.move
+
+[dependencies]
+# Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+wormhole = { local = "../wormhole" }
+
+[addresses]
+pyth = "0x00b53b0f4174108627fbee72e2498b58d6a2714cded53fac537034c220d26302"
+std = "0x1"
+sui =  "0000000000000000000000000000000000000000000000000000000000000002"

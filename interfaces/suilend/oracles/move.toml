@@ -1,0 +1,13 @@
+[package]
+name = "oracles"
+published-at = "0xe84b649199654d18c38e727212f5d8dacfc3cf78d60d0a7fc85fd589f280eb2b"
+edition = "2024.beta"
+# https://github.com/solendprotocol/suilend/blob/devel/contracts/oracles/sources/oracles.move
+
+[dependencies]
+# Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+Pyth = { local = "../pyth" }
+Switchboard = { local = "../switchboard" }
+
+[addresses]
+oracles = "0xe84b649199654d18c38e727212f5d8dacfc3cf78d60d0a7fc85fd589f280eb2b"

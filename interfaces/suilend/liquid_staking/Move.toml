@@ -1,0 +1,11 @@
+[package]
+name = "liquid_staking"
+published-at = "0xc89f4edb8f4dafb97934dbfce11ac132c07759c3bdda6f31d09c7fdca3b80b76"
+# edition = "2024"
+# https://github.com/solendprotocol/suilend/blob/devel/contracts/oracles/sources/oracles.move
+
+[dependencies]
+# Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+liquid_staking = "0xb0575765166030556a6eafd3b1b970eba8183ff748860680245b9edd41c716e7"

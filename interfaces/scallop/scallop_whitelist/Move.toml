@@ -1,0 +1,11 @@
+[package]
+name = "scallop_whitelist"
+version = "10.0.1"
+published-at = "0x1318fdc90319ec9c24df1456d960a447521b0a658316155895014a6e39b5482f"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir="crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+scallop_whitelist = "0x1318fdc90319ec9c24df1456d960a447521b0a658316155895014a6e39b5482f"
+sui =  "0000000000000000000000000000000000000000000000000000000000000002"

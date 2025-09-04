@@ -1,0 +1,14 @@
+{
+    "name": "dex-router-sui-v1",
+    "description": "DexRouter for Sui blockchain",
+    "dependencies": {
+        "@mysten/sui.js": "^0.54.1",
+        "dotenv": "^16.4.7",
+        "node-fetch": "^3.3.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.12.13",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    }
+}

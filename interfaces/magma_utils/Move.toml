@@ -1,0 +1,13 @@
+[package]
+name = "magma_utils"
+version = "0.0.1"
+#edition = "2024.beta"
+published-at = "0x682eaba7450909645bf949db3fc5881432a00b49b4c06d6974ecc4ee684e7992"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+magma_math = { local = "../magma_math" }
+
+[addresses]
+magma_math = "0x659c0e9c4c8a416f040fa758d4fc4073a5fdd1fed97edadcd5cba5180fb36246"
+magma_utils = "0x682eaba7450909645bf949db3fc5881432a00b49b4c06d6974ecc4ee684e7992"

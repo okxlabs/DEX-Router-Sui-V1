@@ -1,0 +1,11 @@
+[package]
+name = "MovePump"
+version = "1.0.0"
+published-at = "0x7efa6e45163cf24b31ca71bd8f2ca5b93af89b7b34bdb50ec1795223b75d729b"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir="crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+
+[addresses]
+movepump = "0x92fecee99603c0628ced2fbd37f85c05f6c0049c183eb6b1b58db24764c6c7bc"
+sui =  "0000000000000000000000000000000000000000000000000000000000000002"

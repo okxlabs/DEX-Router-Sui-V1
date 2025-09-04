@@ -1,0 +1,16 @@
+[package]
+name = "suilend"
+published-at = "0x43d25be6a55db4e7cc08dd914b8326e7d56fb64c67f0fb961a349e2872f4cc08"
+# edition = "2024.beta"
+# https://github.com/solendprotocol/suilend/blob/devel/contracts/suilend/sources/rate_limiter.move
+
+[dependencies]
+# Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
+Pyth = { local = "../pyth" }
+sprungsui = { local = "../sprungsui" }
+liquid_staking = { local = "../liquid_staking" }
+price_identifier = { local = "../price_identifier" }
+
+[addresses]
+suilend = "0xf95b06141ed4a174f239417323bde3f209b972f5930d8521ea38a52aff3a6ddf"
+sui =  "0000000000000000000000000000000000000000000000000000000000000002"
