@@ -131,11 +131,6 @@ DEX-Router-Sui-V1/
 - **TypeScript**: Version 5.0.0 or later
 - **@mysten/sui.js**: Version 0.54.1 or later
 
-### Contract Information
-- **Router Package ID**: `0xafff5502633f670a64328813b66fa08bc7a642ac9c81ed6c4b7ec5448e3b23ad`
-- **Extended Router Package ID**: `0xab71c2c2c37f973e28b2d28847046615bf47acc85ffc3ba2eb3d9a6442b18422`
-- **Network**: Sui mainnet
-
 ### Development Setup
 
 #### 1. Environment Preparation
