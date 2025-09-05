@@ -168,21 +168,50 @@ DEX-Router-Sui-V1/
 - **Network**: Sui mainnet
 
 ### Development Setup
+
+#### 1. Environment Preparation
+Ensure you have installed the required development tools (see Prerequisites section above).
+
+#### 2. Project Setup
 ```bash
 # Clone the repository
 git clone https://github.com/okxlabs/DEX-Router-Sui-V1.git
 cd DEX-Router-Sui-V1
 
+# Configure environment variables
+# Edit .env file with your private key and configuration
+```
+
+#### 3. Contract Build and Deployment
+```bash
+# Build the core router contract
+cd dexrouter
+sui move build
+
+# Deploy to testnet/mainnet
+sui client publish --gas-budget []
+
+# Build the extended router contract
+cd ../dexrouter-extended
+sui move build
+
+# Deploy the extended contract
+sui client publish --gas-budget []
+```
+
+#### 4. Testing Environment Setup
+```bash
+# Return to project root
+cd ..
+
 # Install dependencies
 npm install
 
-# Edit .env with your private key and configuration
+# Run basic functionality tests
+npx ts-node script/test/swap.ts
 
-# Run tests
-ts-node script/test/swap.ts
-
-# Run specific protocol test
-ts-node script/test/dexes/cetus.ts
+# Run specific protocol tests
+npx ts-node script/test/dexes/cetus.ts
 ```
 
 ## Security Features
