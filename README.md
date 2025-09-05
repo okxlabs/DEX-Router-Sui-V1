@@ -20,38 +20,7 @@ The DEX-Router-Sui follows a modular architecture designed for extensibility:
                        └──────────────────┘    └─────────────────┘
 ```
 
-## High-Level Components
-
-### Core Contracts
-
-#### Router Contracts
-- **Package ID**: `0xafff5502633f670a64328813b66fa08bc7a642ac9c81ed6c4b7ec5448e3b23ad`
-- **Extended Package ID**: `0xab71c2c2c37f973e28b2d28847046615bf47acc85ffc3ba2eb3d9a6442b18422`
-- **Version**: v1.1.3
-- **Features**: Smart routing, PTB integration, commission handling, multi-protocol support
-
-### Supported DeFi Protocols (10+ protocols)
-
-#### Router Contracts
-- **AFSUI**: Liquid staking integration with referral vaults
-- **Aftermath**: Advanced AMM with insurance fund and protocol fee vaults
-- **Cetus**: Concentrated liquidity market maker with CLMM interface
-- **DeepBook V3**: Central limit order book with balance manager
-- **FlowX v2/v3**: Multi-version DEX with v2 interface and v3 CLMM
-- **Kriya AMM/CLMM**: Dual protocol integration (AMM + CLMM)
-- **SuiSwap**: Native Sui AMM with build and source code
-- **Turbos**: High-performance concentrated liquidity
-- **AlphaFi**: Advanced liquid staking and yield farming
-- **BlueFin**: Professional spot trading with comprehensive CLMM
-- **Haedal**: Liquid staking (SUI → haSUI) with vault management
-- **Magma**: Advanced yield farming with gauge and math utilities
-- **Momentum**: Next-generation CLMM with slippage protection
-- **Scallop**: Lending and borrowing market with multiple modules
-- **SteamM**: Advanced multi-protocol DEX integration
-- **MetaStable**: Cross-protocol yield optimization
-- **Others**: additional protocols
-
-## High-Level Functionality
+## Core Features
 
 ### Smart Routing
 - **Multi-path execution**: Split orders across multiple DEXs simultaneously
