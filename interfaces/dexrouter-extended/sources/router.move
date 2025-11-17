@@ -8,7 +8,10 @@ module 0x2419dfa70719c1a3aaa2d948484bb95ba4e04ef04a1aef8c8e1b2329c40d3342::route
     struct OrderRecord has copy, drop {
         order_id: u64,
         decimal: u8,
-        out_amount: u64,
+        from_coin_address: std::ascii::String,
+        from_amount: u64,
+        to_coin_address: std::ascii::String,
+        out_amount: u64
     }
     
     struct CommissionRecord has copy, drop {

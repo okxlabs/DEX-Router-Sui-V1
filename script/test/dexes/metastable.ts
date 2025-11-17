@@ -125,6 +125,8 @@ async function main(): Promise<void> {
             txb.pure(walletAddress), // swapReceiverAddress
             txb.pure(0), // orderId
             txb.pure(SUPERSUISUI_DECIMAL), // decimal
+            txb.pure(SUI_TYPE), // from_coin_address
+            txb.pure(swapAmount), // from_coin_amount
         ],
         typeArguments: [SUPERSUI_TYPE]
     });

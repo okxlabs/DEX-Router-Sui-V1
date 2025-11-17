@@ -105,6 +105,8 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),
             txb.pure(0),
             txb.pure(STSUI_DECIMAL),
+            txb.pure(SUI_TYPE),
+            txb.pure(swapAmount),
         ],
         typeArguments: [STSUI_TYPE]
         });

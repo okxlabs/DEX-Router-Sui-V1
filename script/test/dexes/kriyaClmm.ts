@@ -109,6 +109,8 @@ async function main(): Promise<void> {
             txb.pure(walletAddress), // swapReceiverAddress
             txb.pure(0), // orderId
             txb.pure(VSUI_DECIMAL), // decimal
+            txb.pure(SUI_TYPE), // from_coin_address
+            txb.pure(swapAmount), // from_coin_amount
         ],
         typeArguments: [VSUI_TYPE]
     });
