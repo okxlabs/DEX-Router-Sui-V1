@@ -6,7 +6,8 @@ module dexrouter::router {
     use sui::balance::{Self};
     use std::vector;
     use sui::pay;
-
+    use std::ascii;
+    use std::type_name;
 
     // cetus
     use cetusclmm::config::{GlobalConfig};
@@ -80,6 +81,9 @@ module dexrouter::router {
     struct OrderRecord has copy, drop {
         order_id: u64,
         decimal: u8,
+        from_coin_address: std::ascii::String,
+        from_amount: u64,
+        to_coin_address: std::ascii::String,
         out_amount: u64
     }
 
@@ -899,13 +903,18 @@ module dexrouter::router {
         coin: Coin<CoinType>,
         order_id: u64,
         decimal: u8,
+        from_coin_address: ascii::String,
+        from_amount: u64,
         _ctx: &mut TxContext,
     ) : (Coin<CoinType>, u64) {
         let amount_out = coin::value(&coin);
-        
+        let to_coin_address = type_name::into_string(type_name::get<CoinType>());
         event::emit(OrderRecord{ 
             order_id: order_id,
             decimal: decimal,
+            from_coin_address: from_coin_address,
+            from_amount: from_amount,
+            to_coin_address: to_coin_address,
             out_amount: amount_out
         });
         
@@ -920,6 +929,8 @@ module dexrouter::router {
         swapReceiverAddress: address,
         order_id: u64,
         decimal: u8,
+        from_coin_address: ascii::String,
+        from_amount: u64,
         ctx: &mut TxContext,
     ) { 
         assert!(min_amount > 0, E_MIN_AMOUNT_ZERO);
@@ -938,9 +949,14 @@ module dexrouter::router {
             transfer::public_transfer(coin, receiver);
         };
 
+        let to_coin_address = type_name::into_string(type_name::get<CoinType>());
+
         event::emit(OrderRecord{ 
             order_id: order_id,
             decimal: decimal,
+            from_coin_address: from_coin_address,
+            from_amount: from_amount,
+            to_coin_address: to_coin_address,
             out_amount: amount_out
         });
     }

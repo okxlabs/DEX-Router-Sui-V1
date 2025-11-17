@@ -132,7 +132,9 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),       // referral_address
             txb.pure(walletAddress),       // receiver_address
             txb.pure(0),                   // order_id
-            txb.pure(USDC_DECIMAL),                   // decimal
+            txb.pure(USDC_DECIMAL),        // decimal
+            txb.pure(USDT_TYPE),           // from_coin_address
+            txb.pure(swapAmount),          // from_coin_amount
         ],
         typeArguments: [USDC_TYPE]
     });
