@@ -99,9 +99,7 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),           // referral_address
             txb.pure(walletAddress),           // receiver_address
             txb.pure(0),                       // order_id
-            txb.pure(USDC_DECIMAL),            // decimal
-            txb.pure("2::sui::SUI"),           // from_coin_address
-            txb.pure(swapAmount),              // from_coin_amount
+            txb.pure(USDC_DECIMAL),             // decimal
         ],
         typeArguments: [USDC_TYPE]
     });
@@ -116,7 +114,7 @@ async function main(): Promise<void> {
     });
 
     // Uncomment to execute transaction
-    // const result = await provider.signAndExecuteTransactionBlock({
+    // const executeResult = await provider.signAndExecuteTransactionBlock({
     //     transactionBlock: builtTx,
     //     signer: keypair,
     //     options: {
