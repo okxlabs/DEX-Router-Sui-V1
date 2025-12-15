@@ -1,11 +1,10 @@
 // ============================================================================
-// DEX Router Bluefin Test Script
+// DEX Router Haedal Test Script
 // ============================================================================
 
 import { Ed25519Keypair } from "@mysten/sui.js/keypairs/ed25519";
 import { SuiClient } from "@mysten/sui.js/client";
 import { TransactionBlock } from "@mysten/sui.js/transactions";
-import { SUI_CLOCK_OBJECT_ID } from "@mysten/sui.js/utils";
 import * as dotenv from "dotenv";
 
 // Load environment variables
@@ -29,27 +28,24 @@ const config = require("../../config/configInfo.json");
 const DEX_ROUTER = config["DEX_EXTENDED"]!;
 
 // Token configurations
-const AUSD_DECIMAL = 6;
-const AUSD_TYPE = '0x2053d08c1e2bd02791056171aab0fd12bd7cd7efad2ab8f6b9c8902f14df2ff2::ausd::AUSD';
-
-const SUI_ID = config["SUI_ID"]!;
+const SUI_TYPE = "0x2::sui::SUI";
 const SUI_DECIMAL = 9;
-const SUI_TYPE = `${SUI_ID}::sui::SUI`;
+
+const HASUI_TYPE = "0xbde4ba4c2e274a60ce15c1cfff9e5c42e41654ac8b6d906a57efa4bd3c29f47d::hasui::HASUI";
+const HASUI_DECIMAL = 9;
 
 // ============================================================================
-// Bluefin Specific Constants
+// Haedal Specific Constants
 // ============================================================================
 
-const BF_CLOCK = "0x0000000000000000000000000000000000000000000000000000000000000006";
-const BF_MARKET = "0x03db251ba509a8d5d8777b6338836082335d93eecbdd09a11e190a1cff51c352";
-const BF_VAULT = "0xb30df44907da6e9f3c531563f19e6f4a203d70f26f8a33ad57881cd7781e592d";
+const SUI_SYSTEM_STATE = "0x0000000000000000000000000000000000000000000000000000000000000005";
+const HAEDAL_STAKING = "0x47b224762220393057ebf4f70501b6e657c3e56684737568439a04f80849b2ca";
 
-// CLMM sqrt_price_limit boundaries (no restriction)
-const MIN_SQRT_PRICE = BigInt("4295048017");                    // For a2b direction
-const MAX_SQRT_PRICE = BigInt("79226673515401279992447579050"); // For b2a direction
+// Validator address (use 0x0 for default validator selection)
+const VALIDATOR_ADDRESS = "0x0000000000000000000000000000000000000000000000000000000000000000";
 
 // ============================================================================
-// Main Bluefin Test Function
+// Main Haedal Test Function
 // ============================================================================
 
 async function main(): Promise<void> {
@@ -68,35 +64,29 @@ async function main(): Promise<void> {
 
     // Transaction parameters
     const gasBudget = 150000000;
-    const swapAmount = 100000000; // Adjust amount as needed
+    const swapAmount = 1 * 10 ** 9; // 1 SUI in mist
 
     txb.setGasBudget(gasBudget);
 
     // Prepare input coin
-    const inputCoin = txb.splitCoins(
-        txb.gas,
-        [txb.pure(swapAmount.toString())]
-    );
+    const amountCoin = txb.splitCoins(txb.gas, [txb.pure(swapAmount.toString())]);
 
     // ============================================================================
-    // Bluefin Swap: SUI → AUSD
+    // Haedal Swap: SUI → haSUI
     // ============================================================================
+
+    const suiSystemState = txb.object(SUI_SYSTEM_STATE);
+    const haedalStaking = txb.object(HAEDAL_STAKING);
 
     const [outputCoin, outputAmount] = txb.moveCall({
-        target: `${DEX_ROUTER}::router::bluefin_spot_swap_a2b_with_return`,
+        target: `${DEX_ROUTER}::router::haedal_swap_a2b_with_return`,
         arguments: [
-            txb.object(BF_CLOCK),                        // clock
-            txb.object(BF_MARKET),                       // market
-            txb.object(BF_VAULT),                        // vault
-            inputCoin,                                   // coin_in
-            txb.pure(true),                              // by_amount_in
-            txb.pure(swapAmount),                        // amount
-            txb.pure(0),                                 // amount_threshold
-            txb.pure(MIN_SQRT_PRICE, "u128"),            // sqrt_price_limit (no limit for b2a)
-            txb.pure(0),                                 // order_id
-            txb.pure(AUSD_DECIMAL),                      // decimal
+            suiSystemState,                              // sui_system_state
+            haedalStaking,                               // staking
+            amountCoin,                                  // coin_in
+            txb.pure(VALIDATOR_ADDRESS, "address"),      // validater_address
         ],
-        typeArguments: [SUI_TYPE, AUSD_TYPE]
+        typeArguments: []
     });
 
     // ============================================================================
@@ -115,29 +105,43 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),       // referral_address
             txb.pure(walletAddress),       // receiver_address
             txb.pure(0),                   // order_id
-            txb.pure(AUSD_DECIMAL),         // decimal
+            txb.pure(HASUI_DECIMAL),       // decimal
         ],
-        typeArguments: [AUSD_TYPE]
+        typeArguments: [HASUI_TYPE]
     });
 
     // Build and dry run transaction
     const builtTx = await txb.build({ client: provider });
-    const result = await provider.dryRunTransactionBlock({
+    const dryRunResult = await provider.dryRunTransactionBlock({
         transactionBlock: builtTx
     });
 
-    // Uncomment to execute transaction
-    // const executeResult = await provider.signAndExecuteTransactionBlock({
-    //     transactionBlock: builtTx,
-    //     signer: keypair,
-    //     options: {
-    //         showObjectChanges: true,
-    //         showEvents: true,
-    //         showBalanceChanges: true
-    //     }
-    // });
+    console.log("Dry Run Result:", dryRunResult);
 
-    console.log("Bluefin Swap Result:", result);
+    // Check if dry run was successful
+    if (dryRunResult.effects.status.status !== "success") {
+        console.error("Dry run failed:", dryRunResult.effects.status);
+        return;
+    }
+
+    console.log("\n✅ Dry run successful! Executing real transaction...\n");
+
+    // Execute real transaction
+    const realResult = await provider.signAndExecuteTransactionBlock({
+        transactionBlock: txb,
+        signer: keypair,
+        options: {
+            showEffects: true,
+            showEvents: true,
+            showBalanceChanges: true,
+        }
+    });
+
+    console.log("Transaction Digest:", realResult.digest);
+    console.log("Transaction Status:", realResult.effects?.status);
+    console.log("Balance Changes:", realResult.balanceChanges);
+    console.log("\n🎉 Haedal Swap executed successfully!");
+    console.log(`View on explorer: https://suiscan.xyz/mainnet/tx/${realResult.digest}`);
 }
 
 // ============================================================================
@@ -145,6 +149,7 @@ async function main(): Promise<void> {
 // ============================================================================
 
 main().catch((error) => {
-    console.error("Error executing Bluefin test:", error);
+    console.error("Error executing Haedal test:", error);
     process.exit(1);
 });
+
