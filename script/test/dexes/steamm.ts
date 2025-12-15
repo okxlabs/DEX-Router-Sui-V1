@@ -173,8 +173,6 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),
             txb.pure(0),
             txb.pure(WAL_DECIMAL),
-            txb.pure(USDC_COIN_TYPE),
-            txb.pure(swapAmount),
         ],
         typeArguments: [
             WAL_TYPE
@@ -254,8 +252,6 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),
             txb.pure(0),
             txb.pure(SUI_DECIMAL),
-            txb.pure(USDC_COIN_TYPE),
-            txb.pure(swapAmount),
         ],
         typeArguments: [SUI_TYPE]
     });

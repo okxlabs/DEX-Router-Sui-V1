@@ -237,8 +237,6 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),                      // receiver_address
             txb.pure(0),                                  // order_id
             txb.pure(USDT_DECIMAL),                       // decimal
-            txb.pure(SUI_TYPE),                           // from_coin_address
-            txb.pure(totalAmount),                        // from_coin_amount
         ],
         typeArguments: [USDT_TYPE]
     });

@@ -134,8 +134,6 @@ async function main(): Promise<void> {
             txb.pure(walletAddress),
             txb.pure(0),
             txb.pure(SUI_DECIMAL),
-            txb.pure(USDC_TYPE),
-            txb.pure(USDC_AMOUNT),
         ],
         typeArguments: [SUI_TYPE]
     });
