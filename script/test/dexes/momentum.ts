@@ -140,11 +140,36 @@ async function main(): Promise<void> {
 
     // Build and dry run transaction
     const builtTx = await txb.build({ client: provider });
-    const result = await provider.dryRunTransactionBlock({
+    const dryRunResult = await provider.dryRunTransactionBlock({
         transactionBlock: builtTx
     });
 
-    console.log("Momentum Swap Result:", result);
+    console.log("Dry Run Result:", dryRunResult);
+
+    // Check if dry run was successful
+    if (dryRunResult.effects.status.status !== "success") {
+        console.error("Dry run failed:", dryRunResult.effects.status);
+        return;
+    }
+
+    console.log("\n✅ Dry run successful! Executing real transaction...\n");
+
+    // Execute real transaction
+    const realResult = await provider.signAndExecuteTransactionBlock({
+        transactionBlock: txb,
+        signer: keypair,
+        options: {
+            showEffects: true,
+            showEvents: true,
+            showBalanceChanges: true,
+        }
+    });
+
+    console.log("Transaction Digest:", realResult.digest);
+    console.log("Transaction Status:", realResult.effects?.status);
+    console.log("Balance Changes:", realResult.balanceChanges);
+    console.log("\n🎉 Momentum Swap executed successfully!");
+    console.log(`View on explorer: https://suiscan.xyz/mainnet/tx/${realResult.digest}`);
 }
 
 // ============================================================================
