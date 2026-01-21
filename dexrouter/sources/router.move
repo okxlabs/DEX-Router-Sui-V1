@@ -67,7 +67,7 @@ module dexrouter::router {
     const E_INVALID_PARAMETER: u64 = 5;
     const E_AFTERMATH_INPUT_AMOUNT: u64 = 6;
     const E_KRIYA_CLMM_MIN_RETURN_NOT_REACH: u64 = 7;
-    const E_MIN_AMOUNT_ZERO: u64 = 8;
+    // const E_MIN_AMOUNT_ZERO: u64 = 8;
     const E_CETUS_MIN_RETURN_NOT_REACH: u64 = 9;
     const E_KRIYA_CLMM_INPUT_AMOUNT: u64 = 10;
 
@@ -922,7 +922,6 @@ module dexrouter::router {
         decimal: u8,
         ctx: &mut TxContext,
     ) { 
-        assert!(min_amount > 0, E_MIN_AMOUNT_ZERO);
         assert!(toCommissionRate == 0 || (toCommissionRate > 0 && referralAddress != @0x0), E_INVALID_PARAMETER);
         let amount_out = coin::value(&coin);
         let receiver = if (swapReceiverAddress != @0x0) swapReceiverAddress else tx_context::sender(ctx);

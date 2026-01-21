@@ -6,8 +6,8 @@ This document lists the official **DEX-Router-Sui-V1** deployments on Sui.
 
 | Chain | Address (Package ID) | Explorer |
 | --- | --- | --- |
-| Sui Mainnet | `0xfdba5cc063cbe60523712258f28372d4b5b184abc91be6752a7949c4c879fe2a` | [Sui Explorer](https://suivision.xyz/package/0xfdba5cc063cbe60523712258f28372d4b5b184abc91be6752a7949c4c879fe2a) |
-| Sui Mainnet (Extended) | `0x5c49bc6413188c7a975d957956e646a76fc1c631775211eb322dd0935b6fe4fc` | [Sui Explorer](https://suivision.xyz/package/0x5c49bc6413188c7a975d957956e646a76fc1c631775211eb322dd0935b6fe4fc) |
+| Sui Mainnet | `0x0705aa6aad0a6195d1da7f1b1b057d58684040459c375db056059b1747d5d1f0` | [Sui Explorer](https://suivision.xyz/package/0x0705aa6aad0a6195d1da7f1b1b057d58684040459c375db056059b1747d5d1f0) |
+| Sui Mainnet (Extended) | `0xfb62ac68863a8cf5066a04171ea173c49051049a460163304bd4a938f0a7ef3a` | [Sui Explorer](https://suivision.xyz/package/0xfb62ac68863a8cf5066a04171ea173c49051049a460163304bd4a938f0a7ef3a) |
 
 ## Verification
 

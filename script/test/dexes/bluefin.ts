@@ -110,7 +110,7 @@ async function main(): Promise<void> {
         target: `${DEX_ROUTER}::router::finalize`,
         arguments: [
             outputCoin,                    // input_coin
-            txb.pure(1),                   // min_amount
+            txb.pure(0),                   // min_amount
             txb.pure(0),                   // commission_rate
             txb.pure(walletAddress),       // referral_address
             txb.pure(walletAddress),       // receiver_address
