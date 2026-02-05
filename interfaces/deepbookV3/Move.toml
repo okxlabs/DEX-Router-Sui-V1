@@ -2,7 +2,7 @@
 name = "deepbook"
 version = "0.0.1"
 #edition = "2024.beta"
-published-at = "0xb29d83c26cdd2a64959263abbcfc4a6937f0c9fccaf98580ca56faded65be244"
+published-at = "0x337f4f4f6567fcd778d5454f27c16c70e2f274cc6377ea6249ddf491482ef497"
 
 [dependencies]
 Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "mainnet-v1.48.2" }
