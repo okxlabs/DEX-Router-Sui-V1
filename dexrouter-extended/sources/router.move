@@ -797,24 +797,25 @@ module dexrouter_extended::router {
         ctx: &mut TxContext,
     ) { 
         assert!(toCommissionRate == 0 || (toCommissionRate > 0 && referralAddress != @0x0), E_INVALID_PARAMETER);
-        let amount_out = coin::value(&coin);
         let receiver = if (swapReceiverAddress != @0x0) swapReceiverAddress else tx_context::sender(ctx);
-        if (amount_out < min_amount) {
-            abort E_ROUTER_MIN_RETURN_NOT_REACH
-        };
 
-        if(toCommissionRate > 0){
-            let (coin_left, _coin_left_value) = split_with_percentage_for_commission(&mut coin, toCommissionRate, referralAddress, ctx);
+        let net_amount = if(toCommissionRate > 0){
+            let (coin_left, coin_left_value) = split_with_percentage_for_commission(&mut coin, toCommissionRate, referralAddress, ctx);
             transfer::public_transfer(coin_left, receiver);
             destroy_or_transfer<CoinType>(coin, ctx);
+            coin_left_value
         } else {
+            let amount_out = coin::value(&coin);
             transfer::public_transfer(coin, receiver);
+            amount_out
         };
 
-        event::emit(OrderRecord{ 
+        assert!(net_amount >= min_amount, E_ROUTER_MIN_RETURN_NOT_REACH);
+
+        event::emit(OrderRecord{
             order_id: order_id,
             decimal: decimal,
-            out_amount: amount_out
+            out_amount: net_amount
         });
     }
 
