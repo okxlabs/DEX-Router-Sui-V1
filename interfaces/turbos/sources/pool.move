@@ -15,7 +15,7 @@ module turbos_clmm::pool {
     use sui::table::{Self, Table};
     use sui::clock::{Self, Clock};
 
-    const VERSION: u64 = 13;
+    const VERSION: u64 = 18;
     const EWrongVersion: u64 = 23;
 
     struct Versioned has key, store {
